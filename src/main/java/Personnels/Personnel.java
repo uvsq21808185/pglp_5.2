@@ -9,7 +9,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * La classe decrcrivant personnel et qui implemente l'interface "Interface_annuaire"
+ * La classe decrcrivant personnel et qui implemente l'interface "Interface_annuaire".
+ * 
+ * @author ZAOUAM Sirageddine
+ * @version 2.0
  * 
  */
 public final class Personnel  implements Interface_annuaire, Serializable{
@@ -77,7 +80,7 @@ public final class Personnel  implements Interface_annuaire, Serializable{
     }
     /*
      * Modifier l'id de personnel
-     * @param new-id le nouveau id
+     * @param new_id le nouveau id
      */
     public void setId(int new_id) {
     	this.id=new_id;
@@ -107,7 +110,8 @@ public final class Personnel  implements Interface_annuaire, Serializable{
 	}
 	/*
 	 * String representant l'objet Personnel : on aura besoin de cette methode pour le test
-	 * tester si le String de l'objet Personnel est le meme que le string de l'objet deseralizer
+	 * tester si le String de l'objet Personnel est le meme que le string de l'objet deseralizer.
+	 * @return un string.
 	 */
 	public String tostring_test() {
 		String s = prenom + " " + nom + ", Nee le : " + Date + ", numero de telephone : ";
@@ -158,6 +162,7 @@ public final class Personnel  implements Interface_annuaire, Serializable{
 		/*
 		 * Une nouvelle classe de personnel instanciee en ajoutant la liste des numeros de telephone
 		 * @param tel La liste de numeros de tel qu'on veut ajouter.
+		 * @return le personnel builder avec la noubelle liste de teléphone.
 		 */
 		public Personnel_Builder tel (ArrayList<String> tel) {
 			this.tel=tel;
@@ -166,6 +171,7 @@ public final class Personnel  implements Interface_annuaire, Serializable{
 		/*
 		 * Une nouvelle classe de personnel instanciee en ajoutant la date de naissance de la personne
 		 * @param tel La date de naissance de la personne qu'on veur ajouter.
+		 * @return un personnel builder avec la nouvelle date.
 		 */
 		public Personnel_Builder date (java.time.LocalDate date) {
 			this.date=date;
@@ -186,16 +192,21 @@ public final class Personnel  implements Interface_annuaire, Serializable{
 	public void serializer_personnel(final String path) {
 
 	    ObjectOutputStream obj = null;
+	    
 	    try {
+	    	
 	      final FileOutputStream fichier = new FileOutputStream(path);
 	      obj = new ObjectOutputStream(fichier);
 	      obj.writeChars("Descriptif personnel :");
-	      obj.writeObject(this);		     
+	      obj.writeObject(this);
+	      
 	      obj.flush();
           obj.close();
+          
 	    } catch (final java.io.IOException e) {
 	      e.printStackTrace();
 	    }
+	    
 	    finally {
 	      try {
 	        if (obj != null) {
@@ -206,16 +217,20 @@ public final class Personnel  implements Interface_annuaire, Serializable{
 	        ex.printStackTrace();
 	      }
 	    }
+	    
 	    System.out.print("DONE !");
 	}
 	/*
 	 * Deserializer vers le chemin voulu "path" saisi en parametre
 	 * @param path le chemin depuis lequel on veut deserializer l'objet Personnel.
+	 * @return un Personnel.
 	 */
     public static Personnel deserializer_personnel(final String path) {
         ObjectInputStream obj = null;
         Personnel p = null;
+        
         try {
+        	
             FileInputStream fichier = new FileInputStream(path);
             obj = new ObjectInputStream(fichier);
             p = (Personnel) obj.readObject();
@@ -224,6 +239,7 @@ public final class Personnel  implements Interface_annuaire, Serializable{
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+        
         try {
             if (obj != null) {
                 obj.close();
@@ -231,6 +247,7 @@ public final class Personnel  implements Interface_annuaire, Serializable{
         } catch (IOException e2) {
             e2.printStackTrace();
         }
+        
         return p;
     }
 }

@@ -16,6 +16,9 @@ import Personnels.Personnel;
 
 /**
  * DAO pour la classe Personnel.
+ * 
+ * @author ZAOUAM Sirageddine
+ * @version 2.0
  */
 
 public class DAOPersonnelJDBC extends AbstractDAO<Personnel> {
@@ -28,7 +31,8 @@ public class DAOPersonnelJDBC extends AbstractDAO<Personnel> {
     }
     /**
      * cree un element dans la bdd.
-     * @param object element a� ajouter
+     * @param object element a ajouter.
+     * @return le personnel crée.
      */
     @SuppressWarnings("deprecation")
     @Override
@@ -62,6 +66,7 @@ public class DAOPersonnelJDBC extends AbstractDAO<Personnel> {
     /**
      * cherche un element dans la bdd.
      * @param id identifiant de l'objet a chercher
+     * @return le personnel correspondnat à cet identifiant.
      */
     @SuppressWarnings({ "deprecation" })
     @Override
@@ -92,7 +97,8 @@ public class DAOPersonnelJDBC extends AbstractDAO<Personnel> {
     }
     /**
      * modifier un personnel.
-     * @param object données pour modifier
+     * @param object données pour modifier.
+     * @return le personnel après modification.
      */
     @Override
     public Personnel update(final Personnel object) {

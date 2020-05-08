@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import JDBC.DAOFactoryJDBC;
 /**
  * pattern de la fabrique.
+ * @author ZAOUAM Sirageddine
+ * @version 2.0
  */
 public abstract class AbstractDAOFactory {
     /**

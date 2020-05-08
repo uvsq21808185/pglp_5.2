@@ -12,9 +12,11 @@ import Personnels.CompositePersonnel;
 import Personnels.Interface_annuaire;
 import Personnels.Personnel;
 
-
 /**
  * Dao pour la classe CompositePersonnels.
+ * 
+ * @author ZAOUAM Sirageddine
+ * @version 2.0
  */
 public class DAOCompositePersonnelJDBC extends AbstractDAO<CompositePersonnel> {
     /**
@@ -26,7 +28,8 @@ public class DAOCompositePersonnelJDBC extends AbstractDAO<CompositePersonnel> {
     }
     /**
      * creer un element dans la base de donnee.
-     * @param object element a� ajouter
+     * @param object element à ajouter
+     * @return le compositePersonnel crée.
      */
     @Override
     public CompositePersonnel create(final CompositePersonnel object) {
@@ -52,7 +55,8 @@ public class DAOCompositePersonnelJDBC extends AbstractDAO<CompositePersonnel> {
     }
     /**
      * cherche un element dans la base de donner.
-     * @param id identifiant de l'objet a chercher
+     * @param id identifiant de l'objet a chercher.
+     * @return le composite Personnel correspondant à cet id. 
      */
     @Override
     public CompositePersonnel find(final int id) {
@@ -79,6 +83,7 @@ public class DAOCompositePersonnelJDBC extends AbstractDAO<CompositePersonnel> {
     /**
      * modifier un CompositePersonnels.
      * @param object donnees pour modifier
+     * @return un Composite personnel.
      */
     @Override
     public CompositePersonnel update(final CompositePersonnel object) {
@@ -136,7 +141,7 @@ public class DAOCompositePersonnelJDBC extends AbstractDAO<CompositePersonnel> {
     /**
      * creer la relation de composition entre un CompositePersonnels et un Personnel.
      * @param idComposite le composee
-     * @param idComposant le composant
+     * @param idP le personnnel
      * @throws SQLException Echec de la creation
      */
     public void createComposantPersonnel(final int idComposite, final int idP) throws SQLException {
@@ -233,4 +238,5 @@ public class DAOCompositePersonnelJDBC extends AbstractDAO<CompositePersonnel> {
         deleteComposantPersonnel(idComposite);
         deleteComposantComposite(idComposite);
     }
+    
 }

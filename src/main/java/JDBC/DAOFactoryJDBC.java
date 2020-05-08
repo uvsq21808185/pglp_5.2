@@ -10,6 +10,9 @@ import Personnels.Personnel;
 
 /**
  * pattern factory.
+ * 
+ * @author ZAOUAM Sirageddine
+ * @version 2.0
  */
 public class DAOFactoryJDBC extends AbstractDAOFactory {
     /**

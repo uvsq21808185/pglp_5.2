@@ -6,6 +6,8 @@ import java.util.Map;
 /**
  * Pattern DAO.
  * @param <T> type pour le DAO
+ * @author ZAOUAM Sirageddine
+ * @version 2.0
  */
 public abstract class DAO<T>{
 	/*

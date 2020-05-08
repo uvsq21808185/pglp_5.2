@@ -2,9 +2,12 @@ package DAO;
 
 import Personnels.CompositePersonnel;
 import Personnels.Personnel;
-
+/*
+ * 
+ * @author ZAOUAM Sirageddine
+ * @version 2.0
+ */
 public final class DAOFactory {
-	
 	    /**
 	     * Constructeur par defaut
 	     */

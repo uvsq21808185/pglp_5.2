@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /** Classe CompositePersonnel qui herite de la classe Abstraire Interface_annuaire
- * @author Win10
+ * @author ZAOUAM Sirageddine
+ * @version 2.0
  *
  */
 public class CompositePersonnel implements Interface_annuaire, Serializable {
@@ -38,9 +39,14 @@ public class CompositePersonnel implements Interface_annuaire, Serializable {
 	}
 	 /*
      * Retourne l'identifiant du composite.
+     * @return l'identifiant de personnel.
      */
     public final int getId() {
         return id;
+    }
+    @SuppressWarnings("unchecked")
+	public ArrayList<Interface_annuaire> getlistPersonnels() {
+        return (ArrayList<Interface_annuaire>) listPersonnels.clone();
     }
     /*
      * La methode qui implemente l'interface Interface_annuaire.
@@ -53,7 +59,8 @@ public class CompositePersonnel implements Interface_annuaire, Serializable {
     }
     /*
 	 * String representant l'objet Personnel : on aura besoin de cette methode pour le test
-	 * tester si le String de l'objet Personnel est le meme que le string de l'objet deseralizer
+	 * tester si le String de l'objet Personnel est le meme que le string de l'objet deseralizer.
+	 * @return un String de personnel.
 	 */
 	public String tostring_test() {
 		String s ="ID : " + id;
@@ -78,7 +85,9 @@ public class CompositePersonnel implements Interface_annuaire, Serializable {
         listPersonnels = new ArrayList<Interface_annuaire>();
     }
     /* 
-     * Methode pour ajouter des personnels dans la liste 
+     * Methode pour ajouter des personnels dans la liste.
+     * @param personnelle personnel à ajouter.
+     * @return le composite personnel après l'ajout. 
      */
     public CompositePersonnel addPersonnel(Interface_annuaire personnel)
     {
@@ -86,7 +95,9 @@ public class CompositePersonnel implements Interface_annuaire, Serializable {
         return this;
     }
     /* 
-     * Methode pour supprimer des personnels de la liste 
+     * Methode pour supprimer des personnels de la liste.
+     * @param personnel le personnel qu'on veut supprimer.
+     * @return le composite personnel après la suppression.
      */
 
     public CompositePersonnel removePersonnel(Interface_annuaire personnel)
@@ -95,7 +106,8 @@ public class CompositePersonnel implements Interface_annuaire, Serializable {
         return this;
     }
     /* 
-     * Cette methode renvoie un iterateur sur ListPersonnels
+     * Cette methode renvoie un iterateur sur ListPersonnels.
+     * @return un itérateur sur listPersonnels.
      */
     public Iterator<Interface_annuaire> iterator() {
 		return listPersonnels.iterator();
@@ -108,14 +120,20 @@ public class CompositePersonnel implements Interface_annuaire, Serializable {
 
 	    ObjectOutputStream obj = null;
 	    try {
+	    	
+	    	
 	      final FileOutputStream fichier = new FileOutputStream(path);
 	      obj = new ObjectOutputStream(fichier);
 	      obj.writeChars("Descriptif CompositePersonnel :");
-	      obj.writeObject(this);		     
+	      obj.writeObject(this);	
+	      
 	      obj.flush();
           obj.close();
+          
 	    } catch (final java.io.IOException e) {
 	      e.printStackTrace();
+	      
+	      
 	    }
 	    finally {
 	      try {
@@ -123,20 +141,24 @@ public class CompositePersonnel implements Interface_annuaire, Serializable {
 	          obj.flush();
 	          obj.close();
 	        }
+	        
 	      } catch (final IOException ex) {
 	        ex.printStackTrace();
 	      }
 	    }
+	    
 	    System.out.print("DONE !");
 	}
 	/*
 	 * Deserializer vers le chemin voulu "path"
 	 * @param path le chemin depuis lequel on veut deserializer l'objet CompositePersonnel.
+	 * @return un CompositePersonnel.
 	 */
     public static CompositePersonnel deserializer_composite(final String path) {
         ObjectInputStream obj = null;
         CompositePersonnel p = null;
         try {
+        	
             FileInputStream fichier = new FileInputStream(path);
             obj = new ObjectInputStream(fichier);
             p = (CompositePersonnel) obj.readObject();
@@ -145,6 +167,7 @@ public class CompositePersonnel implements Interface_annuaire, Serializable {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+        
         try {
             if (obj != null) {
                 obj.close();
@@ -152,8 +175,10 @@ public class CompositePersonnel implements Interface_annuaire, Serializable {
         } catch (IOException e2) {
             e2.printStackTrace();
         }
+        
         return p;
     }
+    
     /**
      * vider la liste des personnels.
      */

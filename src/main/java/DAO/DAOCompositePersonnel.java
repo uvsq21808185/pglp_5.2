@@ -13,6 +13,8 @@ import Personnels.CompositePersonnel;
 import Personnels.Interface_annuaire;
 /**
  * DAO pour la classe CompositePersonnel.
+ * @author ZAOUAM Sirageddine
+ * @version 2.0
  */
 
 public class DAOCompositePersonnel extends DAO<CompositePersonnel> implements Serializable {
@@ -33,7 +35,7 @@ public class DAOCompositePersonnel extends DAO<CompositePersonnel> implements Se
     }
     /**
      * Permet d'obtenir un CompositePersonnels du DAO.
-     * @param id identifiant de l'element a  obtenir
+     * @param id identifiant de l'element Ã  obtenir
      * @return null si aucun CompositePersonnels existe avec l'id specifie
      */
     public CompositePersonnel find(final int id) {
@@ -46,7 +48,7 @@ public class DAOCompositePersonnel extends DAO<CompositePersonnel> implements Se
     }
     /**
      * Permet d'ajouter un CompositePersonnels dans la liste du DAO.
-     * @param object l'element a  ajouter
+     * @param object l'element Ã  ajouter
      */
     public void ajouter(final CompositePersonnel object) {
         list.add(object);
@@ -64,7 +66,7 @@ public class DAOCompositePersonnel extends DAO<CompositePersonnel> implements Se
      * On verifie a chaque fois si la cle est identique a l'attribut et si la valeur est de meme type
      * que l'attribut.
      * @param object l'element qu'on veut modifier
-     * @param params les parametres a  modifier
+     * @param params les parametres Ã  modifier
      */
     @SuppressWarnings("unchecked")
     public void update(final CompositePersonnel object,
@@ -83,7 +85,7 @@ public class DAOCompositePersonnel extends DAO<CompositePersonnel> implements Se
     }
     /**
      * supprime un CompositePersonnels du DAO.
-     * @param object l'element a  supprimer
+     * @param object l'element aï¿½ supprimer
      */
     public void delete(final CompositePersonnel object) {
         list.remove(object);
@@ -120,6 +122,7 @@ public class DAOCompositePersonnel extends DAO<CompositePersonnel> implements Se
 	/*
 	 * Deserializer vers le chemin voulu "path" saisi en parametre
 	 * @param path le chemin depuis lequel on veut deserializer l'objet DAOCompositePersonnel.
+	 * @return un DAOCompositePersonnel.
 	 */
     public static DAOCompositePersonnel deserializer_daocompositepersonnel(final String path) {
         ObjectInputStream obj = null;
