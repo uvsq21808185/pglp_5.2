@@ -1,4 +1,4 @@
-# pglp_5.1 Serialisation en Java
+# pglp_5.1 JDBC (Java DataBase Connectivity)
 
 ![Test Image 4](https://www.javatpoint.com/images/jdbc.JPG)
 
